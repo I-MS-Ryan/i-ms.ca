@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IMS – Inter-Municipal Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #080d1a;
+      --navy2:   #0d1526;
+      --navy3:   #111d35;
+      --teal:    #00d4b4;
+      --teal2:   #00ffe7;
+      --slate:   #8fa8c8;
+      --light:   #ccdaed;
+      --white:   #f0f6ff;
+      --border:  rgba(0,212,180,0.15);
+      --card-bg: rgba(13,21,38,0.85);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Epilogue', sans-serif;
+      background: var(--navy);
+      color: var(--light);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 4rem;
+      background: rgba(8,13,26,0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      transition: padding .3s;
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 1.25rem;
+      color: var(--white);
+      letter-spacing: .03em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--teal); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--slate); font-size: .85rem; font-weight: 500;
+      text-decoration: none; letter-spacing: .06em; text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-cta {
+      background: var(--teal); color: var(--navy);
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: .8rem; letter-spacing: .08em; text-transform: uppercase;
+      padding: .55rem 1.4rem; border-radius: 4px;
+      text-decoration: none; transition: background .2s, transform .15s;
+    }
+    .nav-cta:hover { background: var(--teal2); transform: translateY(-1px); }
+
+    /* ─── HERO ────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 7rem 4rem 5rem;
+    }
+    .hero-grid-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,180,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,180,.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+    .hero-glow {
+      position: absolute; top: -10%; right: -5%;
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,212,180,.12) 0%, transparent 70%);
+      animation: pulse 6s ease-in-out infinite;
+    }
+    .hero-glow2 {
+      position: absolute; bottom: 0; left: 20%;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,80,200,.1) 0%, transparent 70%);
+      animation: pulse 8s ease-in-out infinite reverse;
+    }
+    @keyframes pulse {
+      0%,100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.08); opacity: .7; }
+    }
+    .hero-content {
+      position: relative; max-width: 780px;
+      animation: fadeUp .9s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .6rem;
+      font-size: .78rem; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--teal);
+      margin-bottom: 1.4rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block;
+      width: 28px; height: 2px; background: var(--teal);
+    }
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: clamp(2.8rem, 6vw, 5.2rem);
+      line-height: 1.05; letter-spacing: -.02em;
+      color: var(--white); margin-bottom: 1.5rem;
+    }
+    .hero h1 em {
+      font-style: normal; color: var(--teal);
+      position: relative; display: inline-block;
+    }
+    .hero h1 em::after {
+      content: ''; position: absolute;
+      bottom: 4px; left: 0; right: 0; height: 3px;
+      background: var(--teal); opacity: .4;
+    }
+    .hero p {
+      font-size: 1.15rem; font-weight: 300; color: var(--slate);
+      max-width: 560px; line-height: 1.75; margin-bottom: 2.5rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--teal); color: var(--navy);
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: .9rem; letter-spacing: .06em; text-transform: uppercase;
+      padding: .9rem 2.2rem; border-radius: 4px;
+      text-decoration: none; transition: all .2s;
+      border: 2px solid var(--teal);
+    }
+    .btn-primary:hover { background: var(--teal2); border-color: var(--teal2); transform: translateY(-2px); }
+    .btn-secondary {
+      background: transparent; color: var(--light);
+      font-family: 'Syne', sans-serif; font-weight: 600;
+      font-size: .9rem; letter-spacing: .06em; text-transform: uppercase;
+      padding: .9rem 2.2rem; border-radius: 4px;
+      text-decoration: none; transition: all .2s;
+      border: 2px solid var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--teal); color: var(--teal); }
+
+    /* ─── STATS BAR ───────────────────────────────────── */
+    .stats-bar {
+      background: var(--navy3);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 4rem;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem; font-weight: 800; color: var(--teal);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: .8rem; color: var(--slate); letter-spacing: .08em;
+      text-transform: uppercase; margin-top: .4rem;
+    }
+
+    /* ─── SECTION SHARED ──────────────────────────────── */
+    section { padding: 6rem 4rem; }
+    .section-eyebrow {
+      font-size: .75rem; font-weight: 600; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--teal);
+      display: flex; align-items: center; gap: .6rem;
+      margin-bottom: 1rem;
+    }
+    .section-eyebrow::before {
+      content: ''; display: block; width: 20px; height: 2px; background: var(--teal);
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 800;
+      color: var(--white); line-height: 1.1; letter-spacing: -.02em;
+      margin-bottom: 1.2rem;
+    }
+    .section-sub {
+      font-size: 1.05rem; font-weight: 300; color: var(--slate);
+      max-width: 560px; line-height: 1.75;
+    }
+    .section-header { margin-bottom: 3.5rem; }
+
+    /* ─── ABOUT / PROBLEMS ────────────────────────────── */
+    .about { background: var(--navy2); }
+    .about-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+      margin-top: 3.5rem;
+    }
+    .about-card {
+      background: var(--navy3);
+      border: 1px solid var(--border);
+      border-radius: 8px; padding: 2rem;
+      position: relative; overflow: hidden;
+      transition: border-color .3s;
+    }
+    .about-card:hover { border-color: rgba(0,212,180,.4); }
+    .about-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 100%; height: 3px;
+    }
+    .about-card.problem::before { background: rgba(255,90,90,.5); }
+    .about-card.solution::before { background: var(--teal); }
+    .card-icon {
+      font-size: 2rem; margin-bottom: 1rem; display: block;
+    }
+    .about-card h3 {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 1.05rem; color: var(--white); margin-bottom: .7rem;
+    }
+    .about-card p {
+      font-size: .9rem; color: var(--slate); line-height: 1.7;
+    }
+
+    /* ─── SOLUTIONS ───────────────────────────────────── */
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 1.5rem;
+    }
+    .solution-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.8rem 2rem;
+      position: relative; overflow: hidden;
+      transition: border-color .3s, transform .25s;
+      cursor: default;
+    }
+    .solution-card:hover {
+      border-color: rgba(0,212,180,.45);
+      transform: translateY(-4px);
+    }
+    .solution-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--teal), transparent);
+      opacity: 0; transition: opacity .3s;
+    }
+    .solution-card:hover::after { opacity: 1; }
+    .sol-tag {
+      display: inline-block;
+      font-size: .65rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--teal);
+      background: rgba(0,212,180,.1); border: 1px solid rgba(0,212,180,.2);
+      border-radius: 3px; padding: .2rem .6rem;
+      margin-bottom: 1rem;
+    }
+    .sol-icon { font-size: 1.7rem; margin-bottom: .8rem; display: block; }
+    .solution-card h3 {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 1rem; color: var(--white); margin-bottom: .6rem;
+      line-height: 1.3;
+    }
+    .solution-card p {
+      font-size: .875rem; color: var(--slate); line-height: 1.65;
+    }
+    .sol-coming {
+      display: inline-block; margin-top: .8rem;
+      font-size: .65rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: #f0a500;
+      background: rgba(240,165,0,.1); border: 1px solid rgba(240,165,0,.2);
+      border-radius: 3px; padding: .2rem .6rem;
+    }
+
+    /* ─── WHY IMS ──────────────────────────────────────── */
+    .why { background: var(--navy2); }
+    .why-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;
+      margin-top: 3.5rem;
+    }
+    .why-item {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      background: var(--navy3); border: 1px solid var(--border);
+      border-radius: 8px; padding: 1.6rem;
+      transition: border-color .3s;
+    }
+    .why-item:hover { border-color: rgba(0,212,180,.35); }
+    .why-icon {
+      width: 44px; height: 44px; border-radius: 8px;
+      background: rgba(0,212,180,.12); border: 1px solid rgba(0,212,180,.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem; flex-shrink: 0;
+    }
+    .why-item h4 {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: .95rem; color: var(--white); margin-bottom: .4rem;
+    }
+    .why-item p { font-size: .87rem; color: var(--slate); line-height: 1.65; }
+
+    /* ─── CONTACT ──────────────────────────────────────── */
+    .contact { background: var(--navy); }
+    .contact-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+      align-items: start;
+    }
+    .contact-info h2 {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--white);
+      margin-bottom: 1rem; line-height: 1.15;
+    }
+    .contact-info p {
+      font-size: .95rem; color: var(--slate); line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+    .contact-detail {
+      display: flex; align-items: flex-start; gap: .8rem;
+      margin-bottom: 1rem;
+    }
+    .contact-detail-icon {
+      width: 36px; height: 36px;
+      background: rgba(0,212,180,.1); border: 1px solid rgba(0,212,180,.2);
+      border-radius: 6px; display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .contact-detail-text { font-size: .87rem; color: var(--slate); line-height: 1.5; }
+    .contact-detail-text strong { color: var(--light); display: block; margin-bottom: .15rem; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: .4rem; }
+    .form-group label {
+      font-size: .75rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--slate);
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--navy3); border: 1px solid var(--border);
+      color: var(--white); font-family: 'Epilogue', sans-serif;
+      font-size: .9rem; padding: .75rem 1rem; border-radius: 6px;
+      outline: none; transition: border-color .2s;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--teal); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-group select option { background: var(--navy2); }
+    .form-submit {
+      background: var(--teal); color: var(--navy);
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: .9rem; letter-spacing: .06em; text-transform: uppercase;
+      padding: .9rem 2rem; border-radius: 6px; border: none; cursor: pointer;
+      transition: background .2s, transform .15s; align-self: flex-start;
+    }
+    .form-submit:hover { background: var(--teal2); transform: translateY(-2px); }
+
+    /* ─── FOOTER ───────────────────────────────────────── */
+    footer {
+      background: var(--navy2);
+      border-top: 1px solid var(--border);
+      padding: 3rem 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.5rem;
+    }
+    .footer-logo {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: 1.1rem; color: var(--white); text-decoration: none;
+    }
+    .footer-logo span { color: var(--teal); }
+    .footer-tagline {
+      font-size: .8rem; color: var(--slate); margin-top: .3rem;
+      font-style: italic;
+    }
+    .footer-copy {
+      font-size: .78rem; color: var(--slate); text-align: right;
+    }
+
+    /* ─── SCROLL REVEAL ───────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── MOBILE ──────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.5rem; }
+      .hero { padding: 7rem 1.5rem 4rem; }
+      .stats-bar { grid-template-columns: repeat(2,1fr); padding: 2rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; padding: 2rem 1.5rem; }
+      .footer-copy { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────────────── -->
+<nav>
+  <a href="#" class="nav-logo">I<span>M</span>S</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#solutions">Solutions</a></li>
+    <li><a href="#why">Why IMS</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────────────── -->
+<section class="hero" id="home">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Inter-Municipal Solutions</div>
+    <h1>Municipal software<br />built for the<br /><em>real world</em></h1>
+    <p>Practical, affordable, and easy-to-use apps for permitting, inspections, asset management, and more — built specifically for Canadian municipalities of every size.</p>
+    <div class="hero-actions">
+      <a href="#solutions" class="btn-primary">Explore Solutions</a>
+      <a href="#contact" class="btn-secondary">Book a Demo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS BAR ─────────────────────────────────────────── -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">12+</div>
+    <div class="stat-label">Apps in Development</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Canadian Built</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">NBC</div>
+    <div class="stat-label">Code Compliant</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">Any Size</div>
+    <div class="stat-label">Municipality Served</div>
+  </div>
+</div>
+
+<!-- ─── ABOUT ─────────────────────────────────────────────── -->
+<section class="about" id="about">
+  <div class="section-header">
+    <div class="section-eyebrow">The Problem We Solve</div>
+    <h2 class="section-title">Municipalities deserve<br />better tools</h2>
+    <p class="section-sub">The expectations placed on municipalities keep growing — but the tools available are either too expensive, too complicated, or built for someone else.</p>
+  </div>
+  <div class="about-grid reveal">
+    <div class="about-card problem">
+      <span class="card-icon">📈</span>
+      <h3>Unrealistic Expectations</h3>
+      <p>Reporting, record keeping, communication, documentation, asset management, GIS — municipalities are expected to manage all of it with limited staff and even more limited budgets.</p>
+    </div>
+    <div class="about-card problem">
+      <span class="card-icon">💸</span>
+      <h3>Costly & Complex Solutions</h3>
+      <p>Enterprise software vendors charge tens to hundreds of thousands of dollars — then add extensive training requirements and ongoing maintenance costs that many smaller municipalities simply can't sustain.</p>
+    </div>
+    <div class="about-card solution">
+      <span class="card-icon">✅</span>
+      <h3>IMS Simplified Solutions</h3>
+      <p>Our goal is straightforward: practical, cost-effective apps that any municipality can pick up and use. From the smallest rural RM to a mid-size city — everyone deserves tools that actually work for them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SOLUTIONS ─────────────────────────────────────────── -->
+<section id="solutions">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Our Applications</div>
+    <h2 class="section-title">Everything your municipality needs,<br />in one ecosystem</h2>
+    <p class="section-sub">A growing suite of purpose-built apps. Each one is designed to be standalone or work together as a complete municipal platform.</p>
+  </div>
+
+  <div class="solutions-grid">
+
+    <div class="solution-card reveal">
+      <span class="sol-tag">Permits</span>
+      <span class="sol-icon">🗺️</span>
+      <h3>IMS-Planning — Development Permits</h3>
+      <p>Track all development applications from submission to approval. Use the integrated mapping tool to visualize how new developments affect surrounding properties and land use.</p>
+    </div>
+
+    <div class="solution-card reveal">
+      <span class="sol-tag">Permits · Inspections</span>
+      <span class="sol-icon">🏗️</span>
+      <h3>Building Permits & Site Inspections</h3>
+      <p>Replace spreadsheets with a proper database. Track permits, statuses, and statistics. Send inspection reports directly to owners and contractors. Fully compatible with contracted service providers.</p>
+    </div>
+
+    <div class="solution-card reveal">
+      <span class="sol-tag">Inspections</span>
+      <span class="sol-icon">🔥</span>
+      <h3>Fire Inspections</h3>
+      <p>Pre-built fire inspection checklists so nothing gets missed on site. Record findings, attach photos, and generate reports — all from a mobile device.</p>
+    </div>
+
+    <div class="solution-card reveal">
+      <span class="sol-tag">Enforcement</span>
+      <span class="sol-icon">📋</span>
+      <h3>Site Reporter — Orders & Violations</h3>
+      <p>Record site issues, deficiencies, and notes on the spot. Capture smart, timestamped and geotagged images for orders and enforcement action — all documented and ready when you need it.</p>
+    </div>
+
+    <div class="solution-card reveal">
+      <span class="sol-tag">Communications</span>
+      <span class="sol-icon">📢</span>
+      <h3>Mass Notification System</h3>
+      <p>Communicate with staff, council, or citizens all at once with one message. Full delivery records ensure everyone received the same information at the same time.</p>
+    </div>
+
+    <div class="solution-card reveal">
+      <span class="sol-tag">Asset Management</span>
+      <span class="sol-icon">🌾</span>
+      <h3>Rural Municipal Asset Management</h3>
+      <p>Designed for rural municipalities and RMs. Track roads, infrastructure, and assets across large geographic areas. Simple enough for small offices, powerful enough to satisfy reporting obligations.</p>
+    </div>
+
+    <div class="solution-card reveal">
+      <span class="sol-tag">Asset Management</span>
+      <span class="sol-icon">🏙️</span>
+      <h3>Urban Municipal Asset Management</h3>
+      <p>For towns and cities managing complex networks of infrastructure. Track assets through their full lifecycle — from installation to maintenance to replacement — with detailed history logs.</p>
+    </div>
+
+    <div class="solution-card reveal">
+      <span class="sol-tag">Maintenance</span>
+      <span class="sol-icon">🏢</span>
+      <h3>Building Maintenance & Recording</h3>
+      <p>Keep a running log of all municipal building repairs. Record damage with photos and track repairs as they happen. Know your maintenance history at a glance.</p>
+    </div>
+
+    <div class="solution-card reveal">
+      <span class="sol-tag">Maintenance</span>
+      <span class="sol-icon">🚜</span>
+      <h3>Equipment Maintenance & Recording</h3>
+      <p>Track machine wear, breakdowns, and replacements. Photo documentation for warranty claims. Stay ahead of failures with a complete maintenance history for every piece of equipment.</p>
+    </div>
+
+    <div class="solution-card reveal">
+      <span class="sol-tag">GIS · Mapping</span>
+      <span class="sol-icon">📍</span>
+      <h3>GIS Mapping Portal</h3>
+      <p>A shared, up-to-date map layer for your municipality. Plot permits, assets, inspections, and violations on one geographic view. Built for staff use — no GIS expertise required.</p>
+      <span class="sol-coming">Coming Soon</span>
+    </div>
+
+    <div class="solution-card reveal">
+      <span class="sol-tag">Bylaw · Enforcement</span>
+      <span class="sol-icon">📜</span>
+      <h3>Bylaw & Enforcement Management</h3>
+      <p>Manage bylaw complaints, track investigations, and document enforcement actions from first report to resolution. Generate notices and keep a complete, defensible record.</p>
+      <span class="sol-coming">Coming Soon</span>
+    </div>
+
+    <div class="solution-card reveal">
+      <span class="sol-tag">Licensing</span>
+      <span class="sol-icon">🪪</span>
+      <h3>Business Licensing</h3>
+      <p>Issue, renew, and track business licences without paper forms. Automate renewal notices, track compliance conditions, and give businesses a simple online application experience.</p>
+      <span class="sol-coming">Coming Soon</span>
+    </div>
+
+    <div class="solution-card reveal">
+      <span class="sol-tag">Infrastructure</span>
+      <span class="sol-icon">🛣️</span>
+      <h3>Road & Infrastructure Inspections</h3>
+      <p>Mobile-first road inspection tool for recording surface conditions, drainage issues, and deficiencies. Generate condition reports and prioritize capital work with objective field data.</p>
+      <span class="sol-coming">Coming Soon</span>
+    </div>
+
+    <div class="solution-card reveal">
+      <span class="sol-tag">Records</span>
+      <span class="sol-icon">⚰️</span>
+      <h3>Cemetery Management</h3>
+      <p>Maintain accurate burial records, plot maps, and interment histories. Respond to public inquiries quickly and ensure records are preserved and searchable for future generations.</p>
+      <span class="sol-coming">Coming Soon</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── WHY IMS ─────────────────────────────────────────── -->
+<section class="why" id="why">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Why IMS</div>
+    <h2 class="section-title">Built different.<br />By people who know municipal work.</h2>
+    <p class="section-sub">We're not a generic software company that adapted a product for municipalities. This was designed from the ground up for how your office actually operates.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-item reveal">
+      <div class="why-icon">🇨🇦</div>
+      <div>
+        <h4>Designed for Canadian Municipalities</h4>
+        <p>Built with the National Building Code, provincial amendments, and the realities of Saskatchewan and western Canadian municipal operations in mind.</p>
+      </div>
+    </div>
+    <div class="why-item reveal">
+      <div class="why-icon">💰</div>
+      <div>
+        <h4>Accessible Pricing</h4>
+        <p>Straightforward, affordable pricing that doesn't exclude small towns or rural municipalities. No surprise costs, no lengthy contracts, no massive implementation bills.</p>
+      </div>
+    </div>
+    <div class="why-item reveal">
+      <div class="why-icon">📱</div>
+      <div>
+        <h4>Mobile-First Field Tools</h4>
+        <p>Our apps work where inspectors and field staff actually are — on site, often offline. Capture data, photos, and notes from any device, sync when you're back in range.</p>
+      </div>
+    </div>
+    <div class="why-item reveal">
+      <div class="why-icon">🔗</div>
+      <div>
+        <h4>Integrated Ecosystem</h4>
+        <p>Each app works standalone, but they're all designed to connect. A building permit links to an inspection which links to a violation record — the whole workflow in one place.</p>
+      </div>
+    </div>
+    <div class="why-item reveal">
+      <div class="why-icon">🤝</div>
+      <div>
+        <h4>Works with Contract Providers</h4>
+        <p>Multi-jurisdictional by design. Whether you have in-house inspectors, contracted service providers, or regional inspection agreements — IMS handles all of it.</p>
+      </div>
+    </div>
+    <div class="why-item reveal">
+      <div class="why-icon">🚀</div>
+      <div>
+        <h4>No Heavy Onboarding</h4>
+        <p>You shouldn't need weeks of training to use software that manages checklists and permits. Our apps are intuitive enough for any staff member to pick up quickly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─────────────────────────────────────────── -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info reveal">
+      <div class="section-eyebrow" style="margin-bottom:1rem;">Get in Touch</div>
+      <h2>Let's talk about<br />what your municipality needs</h2>
+      <p>Whether you have a question about a specific app, want to request a demo, or have a unique problem you're trying to solve — we want to hear from you.</p>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">📍</div>
+        <div class="contact-detail-text">
+          <strong>Address</strong>
+          2366 Avenue C North, Saskatoon, Saskatchewan S7L 5X5
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">🕐</div>
+        <div class="contact-detail-text">
+          <strong>Office Hours</strong>
+          Monday – Friday, 9:00 AM – 5:00 PM CST
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-detail-icon">💬</div>
+        <div class="contact-detail-text">
+          <strong>Response Time</strong>
+          We aim to respond within one business day.
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" placeholder="Jane" required />
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" placeholder="Smith" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="jane@yourmunicipality.ca" required />
+        </div>
+        <div class="form-group">
+          <label for="org">Organization / Municipality</label>
+          <input type="text" id="org" placeholder="Town of Example, SK" />
+        </div>
+        <div class="form-group">
+          <label for="interest">Area of Interest</label>
+          <select id="interest">
+            <option value="">Select an app or topic…</option>
+            <option>Building Permits & Inspections</option>
+            <option>Development Permits</option>
+            <option>Fire Inspections</option>
+            <option>Site Reporter / Enforcement</option>
+            <option>Mass Notification</option>
+            <option>Asset Management</option>
+            <option>Building / Equipment Maintenance</option>
+            <option>GIS Mapping Portal</option>
+            <option>Bylaw & Enforcement</option>
+            <option>Business Licensing</option>
+            <option>Road Inspections</option>
+            <option>Cemetery Management</option>
+            <option>General Inquiry / Demo Request</option>
+            <option>Custom / Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Tell us about your municipality and what challenges you're facing…"></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─────────────────────────────────────────── -->
+<footer>
+  <div>
+    <a href="#" class="footer-logo">Inter-<span>Municipal</span> Solutions</a>
+    <div class="footer-tagline">"Dedicated to the success of municipalities"</div>
+  </div>
+  <div class="footer-copy">
+    © 2025 IMS – Inter-Municipal Solutions<br />
+    Saskatoon, Saskatchewan, Canada
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav shrink on scroll
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.padding =
+      window.scrollY > 60 ? '.7rem 4rem' : '1rem 4rem';
+  });
+
+  // Form submit stub
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = 'Sent ✓';
+    btn.style.background = '#00a88f';
+    setTimeout(() => {
+      btn.textContent = 'Send Message →';
+      btn.style.background = '';
+      e.target.reset();
+    }, 3000);
+  }
+</script>
+</body>
+</html>
