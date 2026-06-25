@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News – IMS Inter-Municipal Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px,1fr)); gap: 2rem; }
+    .news-card {
+      background: var(--navy3); border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden;
+      transition: border-color .3s, transform .25s;
+      display: flex; flex-direction: column;
+    }
+    .news-card:hover { border-color: rgba(0,212,180,.4); transform: translateY(-4px); }
+    .news-card-top {
+      padding: 1.5rem 1.8rem 0;
+    }
+    .news-meta {
+      display: flex; align-items: center; gap: .8rem; margin-bottom: 1rem;
+    }
+    .news-tag {
+      font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--teal); background: rgba(0,212,180,.1);
+      border: 1px solid rgba(0,212,180,.2); border-radius: 3px; padding: .2rem .6rem;
+    }
+    .news-date { font-size: .75rem; color: var(--slate); }
+    .news-card h3 {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 1.1rem; color: var(--white); line-height: 1.3; margin-bottom: .8rem;
+    }
+    .news-card p { font-size: .875rem; color: var(--slate); line-height: 1.7; padding: 0 1.8rem; }
+    .news-card-footer {
+      margin-top: auto; padding: 1.2rem 1.8rem;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .news-read-more {
+      font-size: .78rem; font-weight: 700; letter-spacing: .06em;
+      color: var(--teal); text-decoration: none;
+      display: flex; align-items: center; gap: .4rem;
+      transition: gap .2s;
+    }
+    .news-read-more:hover { gap: .7rem; }
+    .news-icon { font-size: 1.5rem; }
+
+    /* FEATURED post */
+    .news-featured {
+      background: linear-gradient(135deg, var(--navy3), var(--navy2));
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 3rem; margin-bottom: 3rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
+    }
+    .news-featured .news-tag { margin-bottom: 1rem; display: inline-block; }
+    .news-featured h2 {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(1.5rem, 2.5vw, 2rem); color: var(--white);
+      line-height: 1.2; margin-bottom: 1rem;
+    }
+    .news-featured p { font-size: .92rem; color: var(--slate); line-height: 1.8; margin-bottom: 1.5rem; }
+    .news-featured-visual {
+      background: var(--navy); border: 1px solid var(--border); border-radius: 10px;
+      padding: 2rem; display: flex; flex-direction: column; gap: .8rem;
+    }
+    .nfv-row {
+      display: flex; align-items: center; gap: .9rem;
+      background: var(--navy2); border: 1px solid var(--border); border-radius: 7px; padding: .8rem 1rem;
+    }
+    .nfv-icon {
+      width: 30px; height: 30px; background: rgba(0,212,180,.12);
+      border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: .9rem; flex-shrink: 0;
+    }
+    .nfv-label { font-size: .78rem; color: var(--light); font-weight: 600; }
+    .nfv-sub { font-size: .68rem; color: var(--slate); }
+    .nfv-arrow { color: var(--teal); font-size: .7rem; font-weight: 700; text-align: center; letter-spacing: .1em; }
+
+    @media (max-width: 960px) {
+      .news-featured { grid-template-columns: 1fr; gap: 2rem; padding: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a class="nav-logo" href="index.html">I<span>M</span>S</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="news.html" class="active">News</a></li>
+  </ul>
+  <a class="nav-cta" href="contact.html">Contact Us</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-grid"></div>
+  <div class="page-header-glow"></div>
+  <div class="page-header-content">
+    <div class="eyebrow">News & Updates</div>
+    <h1>What we're building<br />and why it matters</h1>
+    <p>Updates on IMS app development, municipal software insights, and perspectives from the field on what Canadian municipalities actually need from their tools.</p>
+  </div>
+</div>
+
+<section>
+
+  <!-- FEATURED -->
+  <div class="news-featured reveal">
+    <div>
+      <span class="news-tag">Launch Update</span>
+      <h2>IMS is live — and here's what's coming first</h2>
+      <p>After years of working in building code administration and municipal inspections, the gaps in available software became impossible to ignore. IMS exists to fill those gaps — starting with the apps that solve the most common, most urgent problems: building permits, fire inspections, and asset management.</p>
+      <p>We're building in order of impact. The first apps to ship are focused on the permitting and inspection workflows that every municipality runs, whether they have two staff or two hundred.</p>
+      <a href="contact.html" class="btn-primary" style="font-size:.8rem; padding:.75rem 1.6rem;">Stay in the Loop →</a>
+    </div>
+    <div class="news-featured-visual">
+      <div class="nfv-row">
+        <div class="nfv-icon">🏗️</div>
+        <div><div class="nfv-label">IMS-Build</div><div class="nfv-sub">Building Permits &amp; Inspections — In Development</div></div>
+      </div>
+      <div class="nfv-arrow">↓</div>
+      <div class="nfv-row">
+        <div class="nfv-icon">🔥</div>
+        <div><div class="nfv-label">IMS-Fire</div><div class="nfv-sub">Fire Inspection &amp; Pre-Planning — In Development</div></div>
+      </div>
+      <div class="nfv-arrow">↓</div>
+      <div class="nfv-row">
+        <div class="nfv-icon">🌾</div>
+        <div><div class="nfv-label">IMS-Asset Rural</div><div class="nfv-sub">Rural Asset Management — Planned</div></div>
+      </div>
+      <div class="nfv-arrow">↓</div>
+      <div class="nfv-row">
+        <div class="nfv-icon">📍</div>
+        <div><div class="nfv-label">IMS-Map</div><div class="nfv-sub">GIS Mapping Portal — Planned</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEWS GRID -->
+  <div class="news-grid">
+
+    <div class="news-card reveal">
+      <div class="news-card-top">
+        <div class="news-meta">
+          <span class="news-tag">Fire & Life Safety</span>
+          <span class="news-date">June 2025</span>
+        </div>
+        <span class="news-icon">🔥</span>
+        <h3>What we're building in IMS-Fire — and why it's different</h3>
+      </div>
+      <p>The fire inspection software market is dominated by enterprise tools priced for large departments. Most Saskatchewan volunteer fire departments are doing inspections on paper. IMS-Fire is being built for them — occupancy-based checklists, offline pre-incident plans, and owner-side deficiency reporting that doesn't require installing an app.</p>
+      <div class="news-card-footer">
+        <span class="news-date">5 min read</span>
+        <a href="contact.html" class="news-read-more">Learn more →</a>
+      </div>
+    </div>
+
+    <div class="news-card reveal">
+      <div class="news-card-top">
+        <div class="news-meta">
+          <span class="news-tag">Platform</span>
+          <span class="news-date">May 2025</span>
+        </div>
+        <span class="news-icon">🔗</span>
+        <h3>The property record: how IMS apps connect without duplicating your work</h3>
+      </div>
+      <p>The most important architectural decision in IMS isn't any individual app — it's the shared property record that connects them all. A development approval carries its property data into a building permit. The building permit informs a fire pre-plan. Here's how it works and why it matters for your office.</p>
+      <div class="news-card-footer">
+        <span class="news-date">4 min read</span>
+        <a href="contact.html" class="news-read-more">Learn more →</a>
+      </div>
+    </div>
+
+    <div class="news-card reveal">
+      <div class="news-card-top">
+        <div class="news-meta">
+          <span class="news-tag">Industry</span>
+          <span class="news-date">April 2025</span>
+        </div>
+        <span class="news-icon">🇨🇦</span>
+        <h3>Why Canadian municipalities need software built for Canadian municipalities</h3>
+      </div>
+      <p>Most municipal software on the market was designed for American jurisdictions or large Canadian cities. The NBC, SK Fire Code, provincial asset management requirements, and the reality of rural and small-town operations rarely drive the product roadmap. At IMS, they're the starting point.</p>
+      <div class="news-card-footer">
+        <span class="news-date">6 min read</span>
+        <a href="contact.html" class="news-read-more">Learn more →</a>
+      </div>
+    </div>
+
+    <div class="news-card reveal">
+      <div class="news-card-top">
+        <div class="news-meta">
+          <span class="news-tag">Asset Management</span>
+          <span class="news-date">March 2025</span>
+        </div>
+        <span class="news-icon">🌾</span>
+        <h3>Rural asset management: what RMs actually need to track and report</h3>
+      </div>
+      <p>Saskatchewan rural municipalities face a specific challenge: large geographic areas, limited staff, and growing provincial reporting obligations for infrastructure condition and capital planning. IMS-Asset Rural is being designed around those minimum requirements — simple enough for a two-person office, complete enough to satisfy the province.</p>
+      <div class="news-card-footer">
+        <span class="news-date">5 min read</span>
+        <a href="contact.html" class="news-read-more">Learn more →</a>
+      </div>
+    </div>
+
+    <div class="news-card reveal">
+      <div class="news-card-top">
+        <div class="news-meta">
+          <span class="news-tag">Technology</span>
+          <span class="news-date">February 2025</span>
+        </div>
+        <span class="news-icon">📍</span>
+        <h3>GIS for every municipality — not just the ones who can afford a GIS team</h3>
+      </div>
+      <p>Geographic information tools have historically required specialized staff and expensive software licenses. Modern cloud GIS changes that equation entirely. IMS-Map is being built as a shared layer across all IMS apps — permits, inspections, violations, and assets all plotted in one view, usable by any staff member.</p>
+      <div class="news-card-footer">
+        <span class="news-date">4 min read</span>
+        <a href="contact.html" class="news-read-more">Learn more →</a>
+      </div>
+    </div>
+
+    <div class="news-card reveal">
+      <div class="news-card-top">
+        <div class="news-meta">
+          <span class="news-tag">Field Work</span>
+          <span class="news-date">January 2025</span>
+        </div>
+        <span class="news-icon">📱</span>
+        <h3>Why every IMS field tool has to work offline — and what that actually means</h3>
+      </div>
+      <p>Rural Saskatchewan has real connectivity gaps. An inspector on a remote property, a fire crew responding to a call, or a road crew assessing a culvert at the edge of cell coverage — these are not edge cases, they're the normal operating environment. Here's how IMS handles offline field work.</p>
+      <div class="news-card-footer">
+        <span class="news-date">3 min read</span>
+        <a href="contact.html" class="news-read-more">Learn more →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="cta-strip reveal">
+  <h2>Want updates as we build?</h2>
+  <p>Get in touch and we'll keep you informed as each app launches.</p>
+  <div class="actions">
+    <a href="contact.html" class="btn-primary">Contact Us</a>
+    <a href="solutions.html" class="btn-secondary">Browse Solutions</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="nav-logo" href="index.html">I<span>M</span>S</a>
+      <div class="footer-tagline">"Dedicated to the success of municipalities"</div>
+    </div>
+    <div class="footer-nav">
+      <div class="footer-nav-group">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 IMS – Inter-Municipal Solutions &nbsp;|&nbsp; Saskatoon, Saskatchewan, Canada</div>
+    <div class="footer-copy"><a href="contact.html" style="color:var(--teal);text-decoration:none;">ryan@i-ms.ca</a></div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 70); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  window.addEventListener('scroll', () => {
+    document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 50);
+  });
+</script>
+</body>
+</html>

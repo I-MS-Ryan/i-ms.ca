@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About – IMS Inter-Municipal Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .about-split { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-split p { font-size: .95rem; color: var(--slate); line-height: 1.85; margin-bottom: 1.2rem; }
+    .pull-quote {
+      border-left: 3px solid var(--teal); padding-left: 1.5rem; margin: 2rem 0;
+      font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); line-height: 1.5;
+    }
+    .values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
+    .value-card {
+      background: var(--navy3); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.8rem;
+      border-top: 3px solid var(--teal);
+    }
+    .value-card h3 {
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: .95rem; color: var(--white); margin-bottom: .6rem; margin-top: .8rem;
+    }
+    .value-card p { font-size: .875rem; color: var(--slate); line-height: 1.65; }
+    .value-icon { font-size: 1.8rem; }
+
+    /* LEADERSHIP CARD */
+    .leadership { background: var(--navy2); }
+    .leader-card {
+      background: var(--navy3); border: 1px solid var(--border);
+      border-radius: 12px; padding: 2.5rem;
+      display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: start;
+      max-width: 900px;
+    }
+    .leader-avatar {
+      width: 100px; height: 100px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), rgba(0,212,180,.3));
+      border: 2px solid var(--teal); display: flex; align-items: center;
+      justify-content: center; font-size: 2.5rem; flex-shrink: 0;
+    }
+    .leader-name {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: 1.5rem; color: var(--white); margin-bottom: .3rem;
+    }
+    .leader-title { font-size: .85rem; color: var(--teal); margin-bottom: 1.2rem; font-weight: 600; }
+    .leader-bio { font-size: .9rem; color: var(--slate); line-height: 1.8; margin-bottom: 1.5rem; }
+    .credentials-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: .75rem; }
+    .credential {
+      background: var(--navy); border: 1px solid var(--border); border-radius: 6px;
+      padding: .65rem .9rem; display: flex; align-items: center; gap: .7rem;
+    }
+    .cred-icon { font-size: .9rem; }
+    .cred-text { font-size: .78rem; color: var(--light); font-weight: 600; }
+    .cred-sub { font-size: .68rem; color: var(--slate); }
+
+    /* MISSION STRIP */
+    .mission-strip {
+      background: linear-gradient(135deg, var(--navy3), var(--navy2));
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 5rem 4rem; text-align: center;
+    }
+    .mission-strip h2 {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3.2rem); color: var(--white);
+      line-height: 1.15; margin-bottom: 1.2rem;
+    }
+    .mission-strip h2 em { font-style: normal; color: var(--teal); }
+    .mission-strip p { font-size: 1.05rem; color: var(--slate); max-width: 600px; margin: 0 auto; line-height: 1.8; }
+
+    @media (max-width: 960px) {
+      .about-split { grid-template-columns: 1fr; gap: 2.5rem; }
+      .values-grid { grid-template-columns: 1fr; }
+      .leader-card { grid-template-columns: 1fr; gap: 1.5rem; }
+      .credentials-grid { grid-template-columns: 1fr; }
+      .mission-strip { padding: 3.5rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <a class="nav-logo" href="index.html">I<span>M</span>S</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="news.html">News</a></li>
+  </ul>
+  <a class="nav-cta" href="contact.html">Contact Us</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-grid"></div>
+  <div class="page-header-glow"></div>
+  <div class="page-header-content">
+    <div class="eyebrow">About IMS</div>
+    <h1>Built by people who<br />understand the work</h1>
+    <p>IMS was founded on a straightforward premise: Canadian municipalities deserve practical, affordable software — built around how their offices actually operate, not around what enterprise clients wanted a decade ago.</p>
+  </div>
+</div>
+
+<!-- MISSION STRIP -->
+<div class="mission-strip">
+  <h2>"Dedicated to the<br /><em>success of municipalities</em>"</h2>
+  <p>That isn't a marketing line — it's the filter every product decision runs through. If it doesn't make a municipal office's work simpler, more accurate, or more defensible, it doesn't ship.</p>
+</div>
+
+<!-- OUR STORY -->
+<section>
+  <div class="about-split">
+    <div class="reveal">
+      <div class="section-eyebrow">Our Story</div>
+      <h2 class="section-title">The problem was clear. The solution needed to be built.</h2>
+    </div>
+    <div class="reveal">
+      <p>After years working directly in building code administration, permitting, and inspections across Saskatchewan, it became clear that the tools available to municipalities fell into two categories: paper-based processes held together with spreadsheets, or expensive enterprise systems that required months of implementation and ongoing vendor dependence.</p>
+      <p>Neither option served the reality of most Canadian municipalities — particularly the smaller cities, towns, villages, and rural municipalities that form the backbone of the country but are routinely underserved by software vendors who design for the largest clients first.</p>
+      <p>IMS was founded to close that gap. Starting with the inspection and permitting workflows that form the foundation of building safety and municipal compliance, and expanding into a full ecosystem of connected apps — each one simple enough to use on day one, and built around the minimum industry-standard requirements for each scope of work.</p>
+      <div class="pull-quote">"The tools should work for the municipality — not the other way around."</div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="leadership">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Leadership</div>
+    <h2 class="section-title">Founded on real-world expertise</h2>
+  </div>
+  <div class="leader-card reveal">
+    <div class="leader-avatar">RS</div>
+    <div>
+      <div class="leader-name">Ryan Shepherd</div>
+      <div class="leader-title">Founder &amp; President — IMS / Inter-Municipal Solutions</div>
+      <p class="leader-bio">Ryan brings extensive hands-on experience in building code administration, plan review, and site inspections across Saskatchewan and Alberta. His background spans both technical code compliance and the operational realities of municipal offices — giving IMS a foundation that is grounded in how this work is actually done in the field, not how it looks in a software demo. He also serves in national and provincial leadership roles in the building code and inspection industry, ensuring IMS stays aligned with evolving standards and regulatory requirements.</p>
+      <div class="credentials-grid">
+        <div class="credential">
+          <div class="cred-icon">🎓</div>
+          <div><div class="cred-text">A.Sc.T.</div><div class="cred-sub">Applied Science Technologist</div></div>
+        </div>
+        <div class="credential">
+          <div class="cred-icon">🏛️</div>
+          <div><div class="cred-text">CRBO</div><div class="cred-sub">Certified Registered Building Official</div></div>
+        </div>
+        <div class="credential">
+          <div class="cred-icon">📋</div>
+          <div><div class="cred-text">LBO3</div><div class="cred-sub">Licensed Building Official — Level 3</div></div>
+        </div>
+        <div class="credential">
+          <div class="cred-icon">🏔️</div>
+          <div><div class="cred-text">Alberta SCO</div><div class="cred-sub">Safety Codes Officer — Alberta</div></div>
+        </div>
+        <div class="credential">
+          <div class="cred-icon">🇨🇦</div>
+          <div><div class="cred-text">CCCME Voting Member</div><div class="cred-sub">NRC Appointment — Canadian Codes Committee, Oct 2024–2027</div></div>
+        </div>
+        <div class="credential">
+          <div class="cred-icon">🤝</div>
+          <div><div class="cred-text">VP, ACBOA</div><div class="cred-sub">Association of Chief Building Officials of Alberta</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section>
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Our Principles</div>
+    <h2 class="section-title">What guides every decision we make</h2>
+  </div>
+  <div class="values-grid">
+    <div class="value-card reveal">
+      <div class="value-icon">🎯</div>
+      <h3>Simplicity First</h3>
+      <p>Every feature earns its place. If it doesn't complete an essential task more easily than before, it doesn't ship. Complexity is the enemy of adoption.</p>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">⚖️</div>
+      <h3>Minimum Industry Standard</h3>
+      <p>Every app is built to complete the minimum required tasks for its scope — the same standard a municipal inspector, fire chief, or administrator would be held to professionally.</p>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">🔗</div>
+      <h3>Connected by Design</h3>
+      <p>Apps that share data are more useful than apps that stand alone. The shared property record is the backbone of the IMS ecosystem — no double entry, no disconnected records.</p>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">💰</div>
+      <h3>Accessible to All</h3>
+      <p>A village of 400 people deserves the same quality tools as a city of 40,000. Pricing and complexity should never be a barrier to good municipal governance.</p>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">📱</div>
+      <h3>Field-Ready</h3>
+      <p>Built for the people doing the work — not the people watching it on a dashboard. Mobile-first, offline-capable, and designed for real field conditions.</p>
+    </div>
+    <div class="value-card reveal">
+      <div class="value-icon">🛡️</div>
+      <h3>Defensible Records</h3>
+      <p>Every record created in IMS is timestamped, geotagged, and traceable. When decisions are challenged, your documentation is ready.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cta-strip reveal">
+  <h2>Want to learn more?</h2>
+  <p>We're happy to walk through what IMS can do for your municipality — no pressure, no pitch deck.</p>
+  <div class="actions">
+    <a href="contact.html" class="btn-primary">Get in Touch</a>
+    <a href="solutions.html" class="btn-secondary">Browse Solutions</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="nav-logo" href="index.html">I<span>M</span>S</a>
+      <div class="footer-tagline">"Dedicated to the success of municipalities"</div>
+    </div>
+    <div class="footer-nav">
+      <div class="footer-nav-group">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="solutions.html">Solutions</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 IMS – Inter-Municipal Solutions &nbsp;|&nbsp; Saskatoon, Saskatchewan, Canada</div>
+    <div class="footer-copy"><a href="contact.html" style="color:var(--teal);text-decoration:none;">ryan@i-ms.ca</a></div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 70); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  window.addEventListener('scroll', () => {
+    document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 50);
+  });
+</script>
+</body>
+</html>
