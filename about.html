@@ -10,52 +10,52 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     .about-split { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-    .about-split p { font-size: .95rem; color: var(--slate); line-height: 1.85; margin-bottom: 1.2rem; }
+    .about-split p { font-size: .95rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.2rem; }
     .pull-quote {
       border-left: 3px solid var(--teal); padding-left: 1.5rem; margin: 2rem 0;
-      font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); line-height: 1.5;
+      font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--text); line-height: 1.5;
     }
     .values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; margin-top: 3rem; }
     .value-card {
-      background: var(--navy3); border: 1px solid var(--border);
+      background: var(--warm); border: 1px solid var(--border);
       border-radius: 10px; padding: 1.8rem;
-      border-top: 3px solid var(--teal);
+      border-top: 3px solid var(--yellow);
     }
     .value-card h3 {
       font-family: 'Syne', sans-serif; font-weight: 700;
-      font-size: .95rem; color: var(--white); margin-bottom: .6rem; margin-top: .8rem;
+      font-size: .95rem; color: var(--text); margin-bottom: .6rem; margin-top: .8rem;
     }
-    .value-card p { font-size: .875rem; color: var(--slate); line-height: 1.65; }
+    .value-card p { font-size: .875rem; color: var(--muted); line-height: 1.65; }
     .value-icon { font-size: 1.8rem; }
 
     /* LEADERSHIP CARD */
-    .leadership { background: var(--navy2); }
+    .leadership { background: var(--warm); }
     .leader-card {
-      background: var(--navy3); border: 1px solid var(--border);
+      background: var(--warm); border: 1px solid var(--border);
       border-radius: 12px; padding: 2.5rem;
       display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: start;
       max-width: 900px;
     }
     .leader-avatar {
       width: 100px; height: 100px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--teal), rgba(0,212,180,.3));
-      border: 2px solid var(--teal); display: flex; align-items: center;
+      background: linear-gradient(135deg, var(--yellow), rgba(240,181,0,.4));
+      border: 2px solid var(--yellow); display: flex; align-items: center;
       justify-content: center; font-size: 2.5rem; flex-shrink: 0;
     }
     .leader-name {
       font-family: 'Syne', sans-serif; font-weight: 800;
-      font-size: 1.5rem; color: var(--white); margin-bottom: .3rem;
+      font-size: 1.5rem; color: var(--text); margin-bottom: .3rem;
     }
-    .leader-title { font-size: .85rem; color: var(--teal); margin-bottom: 1.2rem; font-weight: 600; }
-    .leader-bio { font-size: .9rem; color: var(--slate); line-height: 1.8; margin-bottom: 1.5rem; }
+    .leader-title { font-size: .85rem; color: var(--yellow); margin-bottom: 1.2rem; font-weight: 600; }
+    .leader-bio { font-size: .9rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; }
     .credentials-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: .75rem; }
     .credential {
-      background: var(--navy); border: 1px solid var(--border); border-radius: 6px;
+      background: var(--white); border: 1px solid var(--border); border-radius: 6px;
       padding: .65rem .9rem; display: flex; align-items: center; gap: .7rem;
     }
     .cred-icon { font-size: .9rem; }
-    .cred-text { font-size: .78rem; color: var(--light); font-weight: 600; }
-    .cred-sub { font-size: .68rem; color: var(--slate); }
+    .cred-text { font-size: .78rem; color: var(--text); font-weight: 600; }
+    .cred-sub { font-size: .68rem; color: var(--muted); }
 
     /* MISSION STRIP */
     .mission-strip {
@@ -65,11 +65,11 @@
     }
     .mission-strip h2 {
       font-family: 'Syne', sans-serif; font-weight: 800;
-      font-size: clamp(2rem, 4vw, 3.2rem); color: var(--white);
+      font-size: clamp(2rem, 4vw, 3.2rem); color: var(--text);
       line-height: 1.15; margin-bottom: 1.2rem;
     }
-    .mission-strip h2 em { font-style: normal; color: var(--teal); }
-    .mission-strip p { font-size: 1.05rem; color: var(--slate); max-width: 600px; margin: 0 auto; line-height: 1.8; }
+    .mission-strip h2 em { font-style: normal; color: var(--yellow); }
+    .mission-strip p { font-size: 1.05rem; color: var(--muted); max-width: 600px; margin: 0 auto; line-height: 1.8; }
 
     @media (max-width: 960px) {
       .about-split { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -237,7 +237,7 @@
   </div>
   <div class="footer-bottom">
     <div class="footer-copy">© 2025 IMS – Inter-Municipal Solutions &nbsp;|&nbsp; Saskatoon, Saskatchewan, Canada</div>
-    <div class="footer-copy"><a href="contact.html" style="color:var(--teal);text-decoration:none;">ryan@i-ms.ca</a></div>
+    <div class="footer-copy"><a href="contact.html" style="color:var(--yellow);text-decoration:none;">ryan@i-ms.ca</a></div>
   </div>
 </footer>
 

@@ -9,166 +9,97 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* ─── HERO ──────────────────────────────────────────── */
+    /* HERO */
     .hero {
       min-height: 100vh; display: flex; align-items: center;
       padding: 7rem 4rem 5rem; position: relative; overflow: hidden;
+      background: var(--black);
     }
-    .hero-grid {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(0,212,180,.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,212,180,.06) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        -45deg, transparent, transparent 60px,
+        rgba(240,181,0,.03) 60px, rgba(240,181,0,.03) 61px
+      );
     }
-    .hero-glow {
-      position: absolute; top: -10%; right: -5%;
-      width: 700px; height: 700px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,212,180,.12) 0%, transparent 70%);
-      animation: pulse 6s ease-in-out infinite;
+    .hero-accent {
+      position: absolute; top: 0; right: 0; width: 45%;
+      height: 100%; background: linear-gradient(135deg, transparent 30%, rgba(240,181,0,.05) 100%);
     }
-    .hero-glow2 {
-      position: absolute; bottom: 0; left: 20%;
-      width: 400px; height: 400px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,80,200,.1) 0%, transparent 70%);
-      animation: pulse 8s ease-in-out infinite reverse;
+    .hero-bar {
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 4px; background: var(--yellow);
     }
-    @keyframes pulse {
-      0%,100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.08); opacity: .7; }
-    }
-    .hero-content {
-      position: relative; max-width: 780px;
-      animation: fadeUp .9s ease both;
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .hero-content { position: relative; max-width: 780px; padding-left: 2rem; animation: fadeUp .9s ease both; }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:none; } }
     .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: .6rem;
-      font-size: .75rem; font-weight: 700; letter-spacing: .14em;
-      text-transform: uppercase; color: var(--teal); margin-bottom: 1.4rem;
+      font-size: .72rem; font-weight: 700; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--yellow);
+      display: flex; align-items: center; gap: .7rem; margin-bottom: 1.5rem;
     }
-    .hero-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--teal); display: block; }
+    .hero-eyebrow::before { content:''; width:24px; height:2px; background:var(--yellow); display:block; }
     .hero h1 {
       font-family: 'Syne', sans-serif; font-weight: 800;
       font-size: clamp(2.8rem, 6vw, 5rem);
-      line-height: 1.06; letter-spacing: -.02em; color: var(--white); margin-bottom: 1.5rem;
+      line-height: 1.06; letter-spacing: -.02em;
+      color: var(--white); margin-bottom: 1.5rem;
     }
-    .hero h1 em {
-      font-style: normal; color: var(--teal); position: relative; display: inline-block;
-    }
-    .hero h1 em::after {
-      content: ''; position: absolute; bottom: 4px; left: 0; right: 0;
-      height: 3px; background: var(--teal); opacity: .35;
-    }
+    .hero h1 em { font-style: normal; color: var(--yellow); }
     .hero p {
-      font-size: 1.12rem; font-weight: 300; color: var(--slate);
-      max-width: 560px; line-height: 1.78; margin-bottom: 2.5rem;
+      font-size: 1.1rem; font-weight: 300; color: rgba(255,255,255,.6);
+      max-width: 500px; line-height: 1.8; margin-bottom: 2.5rem;
     }
     .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-    /* ─── STATS ─────────────────────────────────────────── */
+    /* STATS */
     .stats-bar {
-      background: var(--navy3); border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 2.5rem 4rem;
+      background: var(--yellow);
+      padding: 2rem 4rem;
       display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem;
     }
     .stat { text-align: center; }
     .stat-num {
-      font-family: 'Syne', sans-serif; font-size: 2.2rem;
-      font-weight: 800; color: var(--teal); line-height: 1;
+      font-family: 'Syne', sans-serif; font-size: 2rem;
+      font-weight: 800; color: var(--black); line-height: 1;
     }
     .stat-label {
-      font-size: .75rem; color: var(--slate); letter-spacing: .08em;
-      text-transform: uppercase; margin-top: .4rem;
+      font-size: .72rem; color: rgba(0,0,0,.6); letter-spacing: .08em;
+      text-transform: uppercase; margin-top: .35rem; font-weight: 600;
     }
 
-    /* ─── ABOUT CARDS ───────────────────────────────────── */
-    .about { background: var(--navy2); }
+    /* ABOUT */
+    .about { background: var(--warm); }
     .about-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
     .about-card {
-      background: var(--navy3); border: 1px solid var(--border);
-      border-radius: 10px; padding: 2rem;
-      border-top: 3px solid transparent;
-      transition: border-top-color .3s, border-color .3s;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 6px; padding: 2rem;
+      border-top: 3px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: border-top-color .3s, box-shadow .3s;
     }
-    .about-card:hover { border-color: rgba(0,212,180,.3); border-top-color: var(--teal); }
-    .about-card.problem { border-top-color: rgba(255,80,80,.4); }
-    .about-card.solution { border-top-color: var(--teal); }
-    .card-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+    .about-card:hover { box-shadow: var(--shadow-md); }
+    .about-card.problem { border-top-color: #d9534f; }
+    .about-card.solution { border-top-color: var(--yellow); }
+    .card-icon { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
     .about-card h3 {
       font-family: 'Syne', sans-serif; font-weight: 700;
-      font-size: 1.05rem; color: var(--white); margin-bottom: .65rem;
+      font-size: 1rem; color: var(--text); margin-bottom: .65rem;
     }
-    .about-card p { font-size: .9rem; color: var(--slate); line-height: 1.72; }
+    .about-card p { font-size: .875rem; color: var(--muted); line-height: 1.75; }
 
-    /* ─── FEATURED SOLUTIONS PREVIEW ───────────────────── */
+    /* FEATURED */
     .featured-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
-
-    /* ─── WHY STRIP ─────────────────────────────────────── */
-    .why-strip { background: var(--navy2); }
-    .why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
-    .why-item {
-      display: flex; gap: 1rem; align-items: flex-start;
-      background: var(--navy3); border: 1px solid var(--border);
-      border-radius: 8px; padding: 1.4rem;
-      transition: border-color .3s;
-    }
-    .why-item:hover { border-color: rgba(0,212,180,.35); }
-    .why-icon {
-      width: 42px; height: 42px; border-radius: 8px; flex-shrink: 0;
-      background: rgba(0,212,180,.1); border: 1px solid rgba(0,212,180,.2);
-      display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
-    }
-    .why-item h4 {
-      font-family: 'Syne', sans-serif; font-weight: 700;
-      font-size: .9rem; color: var(--white); margin-bottom: .3rem;
-    }
-    .why-item p { font-size: .83rem; color: var(--slate); line-height: 1.6; }
-
-    /* ─── INTEGRATION CALLOUT ───────────────────────────── */
-    .integration {
-      background: linear-gradient(135deg, var(--navy3), var(--navy2));
-      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      padding: 5rem 4rem;
-    }
-    .integration-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .integration h2 {
-      font-family: 'Syne', sans-serif; font-weight: 800;
-      font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--white);
-      line-height: 1.15; margin-bottom: 1rem;
-    }
-    .integration h2 em { font-style: normal; color: var(--teal); }
-    .integration p { color: var(--slate); font-size: .95rem; line-height: 1.8; margin-bottom: 1.5rem; }
-    .flow-nodes { display: flex; flex-direction: column; gap: .7rem; }
-    .flow-node {
-      background: var(--navy); border: 1px solid var(--border); border-radius: 8px;
-      padding: .85rem 1.1rem; display: flex; align-items: center; gap: .85rem;
-    }
-    .flow-icon {
-      width: 32px; height: 32px; background: rgba(0,212,180,.1); border-radius: 6px;
-      display: flex; align-items: center; justify-content: center; font-size: .95rem; flex-shrink: 0;
-    }
-    .flow-label { font-size: .8rem; color: var(--light); font-weight: 600; }
-    .flow-sub { font-size: .7rem; color: var(--slate); }
-    .flow-arrow { text-align: center; color: var(--teal); font-size: .7rem; font-weight: 700; letter-spacing: .1em; }
 
     @media (max-width: 960px) {
       .hero { padding: 7rem 1.5rem 4rem; }
+      .hero-content { padding-left: 1rem; }
       .stats-bar { grid-template-columns: repeat(2,1fr); padding: 2rem 1.5rem; }
-      .about-grid, .featured-grid, .why-grid { grid-template-columns: 1fr; }
-      .integration { padding: 3.5rem 1.5rem; }
-      .integration-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-grid, .featured-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="main-nav">
   <a class="nav-logo" href="index.html">I<span>M</span>S</a>
   <ul class="nav-links">
@@ -182,16 +113,15 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
-  <div class="hero-glow2"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-bar"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">Inter-Municipal Solutions</div>
-    <h1>Municipal software<br />built for the<br /><em>real world</em></h1>
-    <p>Practical, affordable, and easy-to-use apps for permitting, inspections, asset management, and more — designed specifically for Canadian municipalities of every size.</p>
+    <h1>IMS — <em>Simplified</em><br />Municipal Solutions</h1>
+    <p>Providing manageable solutions for small and large centers.</p>
     <div class="hero-actions">
-      <a href="solutions.html" class="btn-primary">Explore Solutions</a>
-      <a href="contact.html" class="btn-secondary">Book a Demo</a>
+      <a href="solutions.html" class="btn-primary">Our Solutions</a>
+      <a href="contact.html" class="btn-primary-outline">Contact Us</a>
     </div>
   </div>
 </section>
@@ -205,27 +135,26 @@
 </div>
 
 <!-- ABOUT -->
-<section class="about" id="about">
+<section class="about">
   <div class="section-header reveal">
-    <div class="section-eyebrow">The Problem We Solve</div>
-    <h2 class="section-title">Municipalities deserve better tools</h2>
-    <p class="section-sub">The expectations placed on municipalities keep growing — but the tools available are either too expensive, too complex, or simply not built for how Canadian offices operate.</p>
+    <div class="section-eyebrow">About Us</div>
+    <h2 class="section-title">Why IMS exists</h2>
   </div>
   <div class="about-grid">
     <div class="about-card problem reveal">
       <span class="card-icon">📈</span>
       <h3>Unrealistic Expectations</h3>
-      <p>Reporting, record keeping, communications, asset management, GIS — municipalities are expected to manage it all with limited staff and even more limited budgets.</p>
+      <p>In today's world, the expectations placed on municipalities is never ending. Whether its reporting, record keeping, communication, documentation, asset management, GIS and more; there appears to be an unattainable expectation for municipalities to meet.</p>
     </div>
     <div class="about-card problem reveal">
       <span class="card-icon">💸</span>
-      <h3>Expensive & Complex Solutions</h3>
-      <p>Enterprise vendors charge tens to hundreds of thousands of dollars, then add training and maintenance costs that smaller municipalities simply cannot sustain.</p>
+      <h3>Expensive / Complicated Solutions</h3>
+      <p>There are many solutions for municipalities to use to combat this unrealistic expectation. However, these current solutions come with some heavy costs, most of the time ranging from tens of thousands to hundreds of thousands of dollars. Additionally, these options typically require many hours of training and maintenance to keep the solutions or software usable.</p>
     </div>
     <div class="about-card solution reveal">
       <span class="card-icon">✅</span>
-      <h3>IMS — Built to Fit</h3>
-      <p>Practical, cost-effective apps that any municipality can adopt and use from day one. Essential features done right, without the enterprise complexity or price tag.</p>
+      <h3>IMS Simplified Solutions</h3>
+      <p>We do not have all of the answers, however our goal is to provide easy-to-understand, cost-effective solutions that allow municipalities to complete their tasks. We have created these solutions to allow even the smallest municipalities to utilize GIS systems and on-site information, allowing more efficient recording and use of time.</p>
     </div>
   </div>
 </section>
@@ -233,28 +162,28 @@
 <!-- FEATURED SOLUTIONS -->
 <section>
   <div class="section-header reveal">
-    <div class="section-eyebrow">Featured Solutions</div>
-    <h2 class="section-title">Start with what you need most</h2>
-    <p class="section-sub">Each IMS app is designed to work standalone or connect with the others. Pick what solves your biggest problem today.</p>
+    <div class="section-eyebrow">Our Solutions</div>
+    <h2 class="section-title">A few of our most popular apps</h2>
+    <p class="section-sub">Each solution is designed to be simple, affordable, and ready to use. Select what your municipality needs most.</p>
   </div>
   <div class="featured-grid">
     <div class="card sol-card reveal">
       <span class="sol-tag">Permits · Inspections</span>
       <span class="sol-icon">🏗️</span>
-      <h3>Building Permits & Inspections</h3>
-      <p>Replace spreadsheets with a proper permit database. Mobile inspection reports emailed to owners automatically on site.</p>
+      <h3>Building Permits & Site Inspections</h3>
+      <p>Convert those old spreadsheets into a database and easily manage and track building permits. Send inspection reports directly to the owner and contractor.</p>
     </div>
     <div class="card sol-card reveal">
       <span class="sol-tag">Fire & Life Safety</span>
       <span class="sol-icon">🔥</span>
-      <h3>Fire Inspection & Pre-Planning</h3>
-      <p>Occupancy-based checklists, pre-incident plans, owner deficiency reporting, and a full GIS view of your inspection program.</p>
+      <h3>Fire Inspections</h3>
+      <p>Why make fire inspections complicated? Use the pre-developed checklist to ensure you don't miss anything while on site.</p>
     </div>
     <div class="card sol-card reveal">
       <span class="sol-tag">Asset Management</span>
       <span class="sol-icon">🌾</span>
-      <h3>Rural Asset Management</h3>
-      <p>Roads, culverts, and infrastructure tracked on a GIS map. Condition records and reports that satisfy provincial requirements.</p>
+      <h3>Rural Municipal Asset Management</h3>
+      <p>Track and manage rural municipal assets with ease. Condition recording, maintenance history, and reporting that meets provincial requirements.</p>
     </div>
   </div>
   <div style="margin-top:2.5rem; text-align:center;" class="reveal">
@@ -262,89 +191,21 @@
   </div>
 </section>
 
-<!-- WHY IMS -->
-<section class="why-strip">
-  <div class="section-header reveal">
-    <div class="section-eyebrow">Why IMS</div>
-    <h2 class="section-title">Built different. By people<br />who know municipal work.</h2>
-  </div>
-  <div class="why-grid">
-    <div class="why-item reveal">
-      <div class="why-icon">🇨🇦</div>
-      <div><h4>Designed for Canadian Municipalities</h4><p>Built around the NBC, provincial fire codes, and the realities of western Canadian municipal operations.</p></div>
-    </div>
-    <div class="why-item reveal">
-      <div class="why-icon">💰</div>
-      <div><h4>Accessible Pricing</h4><p>No enterprise contracts, no hidden implementation costs. Pricing that doesn't exclude small towns or rural RMs.</p></div>
-    </div>
-    <div class="why-item reveal">
-      <div class="why-icon">📱</div>
-      <div><h4>Mobile-First Field Tools</h4><p>Built for inspectors on site — offline capable, photo-ready, syncs when you're back in range.</p></div>
-    </div>
-    <div class="why-item reveal">
-      <div class="why-icon">🔗</div>
-      <div><h4>Connected Ecosystem</h4><p>Every app shares a common property record. A permit links to an inspection which links to a fire pre-plan — no double entry.</p></div>
-    </div>
-    <div class="why-item reveal">
-      <div class="why-icon">🤝</div>
-      <div><h4>Works with Contract Providers</h4><p>Multi-jurisdictional by design. Handles in-house staff, contracted inspectors, and intermunicipal agreements.</p></div>
-    </div>
-    <div class="why-item reveal">
-      <div class="why-icon">🚀</div>
-      <div><h4>No Heavy Onboarding</h4><p>Your staff should be using it the same day they sign up. Simple enough for any office, powerful enough to do the job.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- INTEGRATION CALLOUT -->
-<div class="integration">
-  <div class="integration-inner">
-    <div class="reveal">
-      <div class="section-eyebrow">Connected by Design</div>
-      <h2>One property record.<br /><em>Every app, linked.</em></h2>
-      <p>The most powerful feature of IMS isn't any single app — it's that they all share a common property database. Development approval flows into a building permit. The building permit informs the fire pre-plan. No re-entering data, no disconnected systems.</p>
-      <a href="solutions.html" class="btn-primary">See How It Works</a>
-    </div>
-    <div class="flow-nodes reveal">
-      <div class="flow-node">
-        <div class="flow-icon">🗺️</div>
-        <div><div class="flow-label">Development Permit Approved</div><div class="flow-sub">IMS-Planning</div></div>
-      </div>
-      <div class="flow-arrow">↓ property record carries forward</div>
-      <div class="flow-node">
-        <div class="flow-icon">🏗️</div>
-        <div><div class="flow-label">Building Permit Issued</div><div class="flow-sub">IMS-Build — occupancy & construction type linked</div></div>
-      </div>
-      <div class="flow-arrow">↓ classification shared</div>
-      <div class="flow-node">
-        <div class="flow-icon">🔥</div>
-        <div><div class="flow-label">Fire Pre-Plan Created</div><div class="flow-sub">IMS-Fire — building data pulled automatically</div></div>
-      </div>
-      <div class="flow-arrow">↓ deficiency triggers</div>
-      <div class="flow-node">
-        <div class="flow-icon">📜</div>
-        <div><div class="flow-label">Bylaw File Opened</div><div class="flow-sub">IMS-Bylaw — same property, same address</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- CTA -->
 <div class="cta-strip reveal">
-  <h2>Ready to see IMS in action?</h2>
-  <p>Tell us about your municipality and the challenges you're facing. We'll show you what fits.</p>
+  <h2>Want to know <em>more?</em></h2>
+  <p>If you want more information on any of our solutions, or if you're looking for a solution to a separate issue — let us know and we will try to help.</p>
   <div class="actions">
-    <a href="contact.html" class="btn-primary">Book a Demo</a>
-    <a href="solutions.html" class="btn-secondary">Browse Solutions</a>
+    <a href="contact.html" class="btn-primary">Contact Us</a>
+    <a href="solutions.html" class="btn-primary-outline">Browse Solutions</a>
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
       <a class="nav-logo" href="index.html">I<span>M</span>S</a>
-      <div class="footer-tagline">"Dedicated to the success of municipalities"</div>
+      <div class="footer-tagline">"Dedicated to the Success of Municipalities"</div>
     </div>
     <div class="footer-nav">
       <div class="footer-nav-group">
@@ -363,14 +224,22 @@
           <li><a href="solutions.html">Building Permits</a></li>
           <li><a href="solutions.html">Fire Inspections</a></li>
           <li><a href="solutions.html">Asset Management</a></li>
-          <li><a href="solutions.html">Bylaw Enforcement</a></li>
+          <li><a href="solutions.html">Site Reporter</a></li>
+          <li><a href="solutions.html">Codes Toolbox</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-group">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:ryan@i-ms.ca">ryan@i-ms.ca</a></li>
+          <li><a href="contact.html">Send a Message</a></li>
         </ul>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
     <div class="footer-copy">© 2025 IMS – Inter-Municipal Solutions &nbsp;|&nbsp; Saskatoon, Saskatchewan, Canada</div>
-    <div class="footer-copy"><a href="contact.html" style="color:var(--teal);text-decoration:none;">ryan@i-ms.ca</a></div>
+    <div class="footer-copy">"Dedicated to the Success of Municipalities"</div>
   </div>
 </footer>
 

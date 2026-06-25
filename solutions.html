@@ -9,17 +9,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Epilogue:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
+    /*
+    ═══════════════════════════════════════════════════════
+    HOW TO ADD A NEW SOLUTION CARD:
+
+    Copy the block below and paste it before the closing
+    </div> of the .sol-grid div. Fill in:
+      - sol-tag: the category label
+      - sol-icon: an emoji that fits
+      - h3: the app name
+      - p: the description
+      - Remove the sol-soon span if it's already available,
+        or keep it if it's still coming soon.
+
+    <div class="card sol-card reveal">
+      <span class="sol-tag">Category</span>
+      <span class="sol-icon">🔧</span>
+      <h3>App Name</h3>
+      <p>Description of what the app does.</p>
+      <span class="sol-soon">Coming Soon</span>
+    </div>
+    ═══════════════════════════════════════════════════════
+    */
+
     .sol-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(310px,1fr)); gap: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px,1fr));
+      gap: 1.5rem;
     }
-    .cluster-label {
-      font-family: 'Syne', sans-serif; font-weight: 800;
-      font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
-      color: var(--teal); margin: 3rem 0 1.2rem;
-      display: flex; align-items: center; gap: 1rem;
-    }
-    .cluster-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-    .cluster-label:first-child { margin-top: 0; }
   </style>
 </head>
 <body>
@@ -39,143 +56,115 @@
   <div class="page-header-grid"></div>
   <div class="page-header-glow"></div>
   <div class="page-header-content">
-    <div class="eyebrow">Our Applications</div>
-    <h1>Every app your<br />municipality needs</h1>
-    <p>A growing suite of purpose-built apps. Each one works standalone or connects through a shared property record — no duplicate data entry, no disconnected systems.</p>
+    <div class="eyebrow">Our Solutions</div>
+    <h1>Simplified solutions<br />for every municipality</h1>
+    <p>Each IMS app is designed to be easy to understand, cost-effective, and ready to use from day one. Pick the solution that fits your municipality — whether that's one app or all of them.</p>
   </div>
 </div>
 
 <section>
-  <!-- CLUSTER 1 -->
-  <div class="cluster-label">Land & Development</div>
   <div class="sol-grid">
+
+    <!-- ─── SOLUTION 1 ─────────────────────────────────── -->
     <div class="card sol-card reveal">
       <span class="sol-tag">Permits</span>
       <span class="sol-icon">🗺️</span>
       <h3>IMS-Planning — Development Permits</h3>
-      <p>Track applications from submission to approval. GIS map shows all active applications across your municipality. Approvals carry property data directly into building permits — no re-entry required.</p>
+      <p>Track your applications to know the status of each project. Use the mapping tool to see how developments will affect residents in other areas.</p>
     </div>
+
+    <!-- ─── SOLUTION 2 ─────────────────────────────────── -->
     <div class="card sol-card reveal">
       <span class="sol-tag">Permits · Inspections</span>
       <span class="sol-icon">🏗️</span>
-      <h3>IMS-Build — Building Permits & Inspections</h3>
-      <p>Replace spreadsheets with a proper permit database. Track all inspection stages to NBC minimums. Mobile inspection app captures photos with GPS timestamps and emails reports to owners and contractors automatically.</p>
+      <h3>Building Permits & Site Inspections</h3>
+      <p>Convert those old spreadsheets into a database and easily manage and track building permits. Includes status tracking and statistics. Also send copies of your inspection reports directly to the owner and contractor. Works with contracted service providers as well.</p>
     </div>
-  </div>
 
-  <!-- CLUSTER 2 -->
-  <div class="cluster-label">Fire & Life Safety</div>
-  <div class="sol-grid">
+    <!-- ─── SOLUTION 3 ─────────────────────────────────── -->
     <div class="card sol-card reveal">
       <span class="sol-tag">Fire & Life Safety</span>
       <span class="sol-icon">🔥</span>
-      <h3>IMS-Fire — Fire Inspection & Pre-Planning</h3>
-      <p>Occupancy-based inspection checklists (Group A–F per NBC/SK Fire Code). Pre-incident plans with construction type, access points, utility shutoffs, suppression systems, and hydrant locations — available offline for responding units. Owner-side deficiency reporting via a simple web link, no app install needed. GIS dashboard shows your full inspection program status at a glance.</p>
+      <h3>Fire Inspections</h3>
+      <p>Why make fire inspections complicated? Use the pre-developed checklist to ensure you don't miss anything while on site. Pre-planning tools and owner-side deficiency reporting make follow-up simple.</p>
     </div>
-  </div>
 
-  <!-- CLUSTER 3 -->
-  <div class="cluster-label">Compliance & Enforcement</div>
-  <div class="sol-grid">
+    <!-- ─── SOLUTION 4 ─────────────────────────────────── -->
     <div class="card sol-card reveal">
       <span class="sol-tag">Enforcement</span>
       <span class="sol-icon">📋</span>
-      <h3>IMS-Site — Orders & Violations</h3>
-      <p>Record site deficiencies on the spot with GPS-tagged, timestamped photos. Generate formal notices and track compliance deadlines. AI-assisted order language drafted from your field notes. Full history per property.</p>
+      <h3>Site Reporter — Orders & Site Violations</h3>
+      <p>Need to record issues on site for a possible order or enforcement at a later date? Site Reporter allows you to record notes, deficiencies and smart images immediately.</p>
     </div>
-    <div class="card sol-card reveal">
-      <span class="sol-tag">Bylaw</span>
-      <span class="sol-icon">📜</span>
-      <h3>IMS-Bylaw — Bylaw & Enforcement Management</h3>
-      <p>Manage public complaints through investigation to formal resolution. Generate notices, track hearings, and maintain a complete defensible file for every enforcement action. Links directly to Site Reporter field records.</p>
-    </div>
-  </div>
 
-  <!-- CLUSTER 4 -->
-  <div class="cluster-label">Business & Licensing</div>
-  <div class="sol-grid">
-    <div class="card sol-card reveal">
-      <span class="sol-tag">Licensing</span>
-      <span class="sol-icon">🪪</span>
-      <h3>IMS-Licence — Business Licensing</h3>
-      <p>Issue and renew licences without paper forms. Online applications, automated renewal notices, and automatic flags when a business type requires a fire inspection before the licence can be issued.</p>
-      <span class="sol-soon">Coming Soon</span>
-    </div>
-  </div>
-
-  <!-- CLUSTER 5 -->
-  <div class="cluster-label">Asset & Infrastructure Management</div>
-  <div class="sol-grid">
-    <div class="card sol-card reveal">
-      <span class="sol-tag">Asset Management</span>
-      <span class="sol-icon">🌾</span>
-      <h3>IMS-Asset Rural — Rural Asset Management</h3>
-      <p>Roads, culverts, bridges, and rural infrastructure tracked on a GIS map. Condition recording with photos, maintenance history, and capital replacement reports that satisfy provincial asset management requirements.</p>
-    </div>
-    <div class="card sol-card reveal">
-      <span class="sol-tag">Asset Management</span>
-      <span class="sol-icon">🏙️</span>
-      <h3>IMS-Asset Urban — Urban Asset Management</h3>
-      <p>Water mains, sewer, sidewalks, parks, and street lights tracked through their full lifecycle — installation, maintenance, and replacement — with GIS map and detailed history logs.</p>
-    </div>
-    <div class="card sol-card reveal">
-      <span class="sol-tag">Maintenance</span>
-      <span class="sol-icon">🏢</span>
-      <h3>IMS-Maintain — Buildings & Equipment</h3>
-      <p>Log repairs, track parts and warranty claims, and set scheduled maintenance reminders. QR codes on assets link to their full history — scan on-site, update instantly.</p>
-    </div>
-  </div>
-
-  <!-- CLUSTER 6 -->
-  <div class="cluster-label">Infrastructure Inspections</div>
-  <div class="sol-grid">
-    <div class="card sol-card reveal">
-      <span class="sol-tag">Infrastructure</span>
-      <span class="sol-icon">🛣️</span>
-      <h3>IMS-Road — Road & Infrastructure Inspections</h3>
-      <p>GPS-tracked mobile road condition assessments. Record surface conditions, drainage issues, and deficiencies. AI-assisted pavement distress classification from field photos feeds directly into asset management priorities.</p>
-      <span class="sol-soon">Coming Soon</span>
-    </div>
-  </div>
-
-  <!-- CLUSTER 7 -->
-  <div class="cluster-label">Communications & Mapping</div>
-  <div class="sol-grid">
+    <!-- ─── SOLUTION 5 ─────────────────────────────────── -->
     <div class="card sol-card reveal">
       <span class="sol-tag">Communications</span>
       <span class="sol-icon">📢</span>
-      <h3>IMS-Notify — Mass Notification</h3>
-      <p>Send one message to staff, council, or citizens all at once. GIS-based targeting lets you notify everyone in a selected area. Full delivery records for every message sent.</p>
+      <h3>Mass Notification System</h3>
+      <p>Want to communicate with a number of people at the same time and record it? Mass Notification allows you to ensure all of your staff, council or citizens are aware at the same time with the same information.</p>
     </div>
-    <div class="card sol-card reveal">
-      <span class="sol-tag">GIS · Mapping</span>
-      <span class="sol-icon">📍</span>
-      <h3>IMS-Map — GIS Mapping Portal</h3>
-      <p>One shared map layer across all IMS apps. Permits, assets, inspections, and violations plotted and searchable in one view. No GIS expertise required.</p>
-      <span class="sol-soon">Coming Soon</span>
-    </div>
-  </div>
 
-  <!-- CLUSTER 8 -->
-  <div class="cluster-label">Public Records</div>
-  <div class="sol-grid">
+    <!-- ─── SOLUTION 6 ─────────────────────────────────── -->
     <div class="card sol-card reveal">
-      <span class="sol-tag">Records</span>
-      <span class="sol-icon">⚰️</span>
-      <h3>IMS-Cemetery — Cemetery Management</h3>
-      <p>Burial records, plot maps, and interment histories. Respond to public inquiries instantly. GIS-based plot map viewable by families and staff. Records preserved and searchable for future generations.</p>
+      <span class="sol-tag">Asset Management</span>
+      <span class="sol-icon">🌾</span>
+      <h3>Rural Municipal Asset Management</h3>
+      <p>Track and manage rural municipal assets including roads, culverts, bridges, and infrastructure. Condition recording, maintenance history, and reports that satisfy provincial asset management requirements.</p>
+    </div>
+
+    <!-- ─── SOLUTION 7 ─────────────────────────────────── -->
+    <div class="card sol-card reveal">
+      <span class="sol-tag">Asset Management</span>
+      <span class="sol-icon">🏙️</span>
+      <h3>Urban Municipal Asset Management</h3>
+      <p>Track and manage urban municipal infrastructure including water, sewer, sidewalks, parks, and street lights through their full lifecycle — from installation through maintenance to replacement.</p>
+    </div>
+
+    <!-- ─── SOLUTION 8 ─────────────────────────────────── -->
+    <div class="card sol-card reveal">
+      <span class="sol-tag">Maintenance</span>
+      <span class="sol-icon">🏢</span>
+      <h3>Building Maintenance & Recording</h3>
+      <p>Keep track of what repairs you completed. Take pictures of damage and record repairs while they are being completed. Build a complete maintenance history for every municipal building.</p>
+    </div>
+
+    <!-- ─── SOLUTION 9 ─────────────────────────────────── -->
+    <div class="card sol-card reveal">
+      <span class="sol-tag">Maintenance</span>
+      <span class="sol-icon">🚜</span>
+      <h3>Equipment Maintenance & Recording</h3>
+      <p>Pay attention to all the little things. Machine wear, break downs, replacements and more. Take pictures for documentation and warranty. Keep a full maintenance record for every piece of equipment.</p>
+    </div>
+
+    <!-- ─── SOLUTION 10 ────────────────────────────────── -->
+    <div class="card sol-card reveal">
+      <span class="sol-tag">Building Codes</span>
+      <span class="sol-icon">📖</span>
+      <h3>Codes Toolbox</h3>
+      <p>A curated reference engine for building code interpretations, CCMC reports, and appeal decisions. Designed for building officials, inspectors, and designers who need fast, reliable code answers.</p>
+      <a href="https://codes-toolbox.i-ms.ca" target="_blank" style="display:inline-block;margin-top:.9rem;font-size:.72rem;font-weight:700;letter-spacing:.08em;color:var(--yellow);text-decoration:none;text-transform:uppercase;">Visit Codes Toolbox →</a>
+    </div>
+
+    <!-- ─── ADD NEW SOLUTIONS BELOW THIS LINE ──────────── -->
+    <!--
+    <div class="card sol-card reveal">
+      <span class="sol-tag">Category</span>
+      <span class="sol-icon">🔧</span>
+      <h3>App Name</h3>
+      <p>Description of what the app does.</p>
       <span class="sol-soon">Coming Soon</span>
     </div>
+    -->
+
   </div>
 </section>
 
-<!-- CTA -->
 <div class="cta-strip reveal">
-  <h2>Not sure where to start?</h2>
-  <p>Tell us about your municipality and we'll help you identify which apps solve your most pressing problems first.</p>
+  <h2>Don't see what you need?</h2>
+  <p>If you're looking for a solution to a separate issue, let us know and we will try to help. Take care.</p>
   <div class="actions">
-    <a href="contact.html" class="btn-primary">Talk to Us</a>
-    <a href="about.html" class="btn-secondary">About IMS</a>
+    <a href="contact.html" class="btn-primary">Contact Us</a>
   </div>
 </div>
 
@@ -183,7 +172,7 @@
   <div class="footer-inner">
     <div class="footer-brand">
       <a class="nav-logo" href="index.html">I<span>M</span>S</a>
-      <div class="footer-tagline">"Dedicated to the success of municipalities"</div>
+      <div class="footer-tagline">"Dedicated to the Success of Municipalities"</div>
     </div>
     <div class="footer-nav">
       <div class="footer-nav-group">
@@ -200,7 +189,7 @@
   </div>
   <div class="footer-bottom">
     <div class="footer-copy">© 2025 IMS – Inter-Municipal Solutions &nbsp;|&nbsp; Saskatoon, Saskatchewan, Canada</div>
-    <div class="footer-copy"><a href="contact.html" style="color:var(--teal);text-decoration:none;">ryan@i-ms.ca</a></div>
+    <div class="footer-copy"><a href="contact.html" style="color:var(--yellow);text-decoration:none;">ryan@i-ms.ca</a></div>
   </div>
 </footer>
 
